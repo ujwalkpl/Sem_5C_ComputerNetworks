@@ -1,38 +1,12 @@
 //4.Given a  graph find shortest paths  from source to all nodes in the  graph using Dijkstra‟s shortest path algorithm. 
 
 #include<stdio.h>
-#include<conio.h>
-#include<process.h>
+
+
 #include<string.h>
 #include<math.h>
 #define IN 99
 #define N 6
-int dijkstra(int cost[][N], int source, int target);
-int main()
-{
-    int cost[N][N],i,j,w,ch,co;
-    int source, target,x,y;
-    printf("\t The Shortest Path Algorithm ( DIJKSTRA'S ALGORITHM in C) \n\n");
-    for(i=1;i< N;i++)
-    for(j=1;j< N;j++)
-    cost[i][j] = IN;
-    for(x=1;x< N;x++)
-    {
-        for(y=x+1;y< N;y++)
-        {
-            printf("Enter the weight of the path between nodes %d and %d: ",x,y);
-            scanf("%d",&w);
-            cost [x][y] = cost[y][x] = w;
-        }
-        printf("\n");
-    }
-    printf("\nEnter the source:");
-    scanf("%d", &source);
-    printf("\nEnter the target");
-    scanf("%d", &target);
-    co = dijsktra(cost,source,target);
-    printf("\nThe Shortest Path: %d",co);
-}
 int dijsktra(int cost[][N],int source,int target)
 {
     int dist[N],prev[N],selected[N]={0},i,m,min,start,d,j;
@@ -74,7 +48,34 @@ int dijsktra(int cost[][N],int source,int target)
         start = prev[start];
     }
     path[j]='\0';
-    strrev(path);
+  
     printf("%s", path);
     return dist[target];
 }
+
+int main()
+{
+    int cost[N][N],i,j,w,ch,co;
+    int source, target,x,y;
+    printf("\t The Shortest Path Algorithm ( DIJKSTRA'S ALGORITHM in C) \n\n");
+    for(i=1;i< N;i++)
+    for(j=1;j< N;j++)
+    cost[i][j] = IN;
+    for(x=1;x< N;x++)
+    {
+        for(y=x+1;y< N;y++)
+        {
+            printf("Enter the weight of the path between nodes %d and %d: ",x,y);
+            scanf("%d",&w);
+            cost [x][y] = cost[y][x] = w;
+        }
+        printf("\n");
+    }
+    printf("\nEnter the source:");
+    scanf("%d", &source);
+    printf("\nEnter the target");
+    scanf("%d", &target);
+    co = dijsktra(cost,source,target);
+    printf("\nThe Shortest Path: %d",co);
+}
+
